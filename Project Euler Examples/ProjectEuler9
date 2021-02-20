@@ -1,0 +1,16 @@
+bool x = false;
+int a = 0, b = 0;
+
+for (a = 0; a < 500; a++)
+{
+    for (b = 0; b < 500; b++)
+    {
+        if (1000 * a + 1000 * b - a * b == 500000)
+        {
+            x = true;
+            break;
+        }
+    }
+    if (x)
+        break;
+}

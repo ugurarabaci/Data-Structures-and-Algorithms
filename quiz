@@ -1,0 +1,33 @@
+import java.util.*;
+
+public class WordCounter {
+
+    public static void main(String[] args) {
+        String paragraph = "Sanatçı güzel şeyler yaratandır. Güzel şeylerde güzel anlamlar bulanlar kültür ve zevkleri gelişmiş kişilerdir. Onlar için umut vardır. Onlar güzel şeylerin salt Güzellik ifade ettiği seçkinlerdir. Sanatı göz önüne serip";
+
+        // Noktalama işaretlerini temizle ve küçük harfe çevir
+        paragraph = paragraph.replaceAll("[^a-zA-ZçğıöşüÇĞİÖŞÜ\\s]", "").toLowerCase(new Locale("tr", "TR"));
+
+        // Kelimeleri boşluklardan ayır
+        String[] wordsArray = paragraph.split("\\s+");
+
+        System.out.println("Sadece bir kez geçen kelimeler:");
+
+        for (int i = 0; i < wordsArray.length; i++) {
+            String currentWord = wordsArray[i];
+            int count = 0;
+
+            // Aynı kelimenin kaç kez geçtiğini bul
+            for (int j = 0; j < wordsArray.length; j++) {
+                if (currentWord.equals(wordsArray[j])) {
+                    count++;
+                }
+            }
+
+            // Sadece bir kez geçenleri yazdır
+            if (count == 1) {
+                System.out.println(currentWord);
+            }
+        }
+    }
+}
